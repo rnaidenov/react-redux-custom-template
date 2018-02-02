@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getQuotes } from '../actions/quotesActions';
-
+import { Quote } from '../components/Quote';
 
 class QuotesList extends React.Component {
 
@@ -15,14 +15,20 @@ class QuotesList extends React.Component {
 
     render() {
 
-        const { quote } = this.props.quotesReducer;
-        console.log(quote);
 
-        if(quote) {
+        const { quotes } = this.props;
+        
+        if(quotes) {
+
+            const randomQuotes = quotes.map((quote, idx) => {
+                return (
+                    <Quote key={idx} text={quote.content} author={quote.title}/>
+                )
+            });
+
             return (
                 <div>
-                    <p id="content"> {quote.text} </p>
-                    <p id="author"> {quote.author} </p>
+                    { randomQuotes }
                 </div>
             )
         } else {
@@ -32,4 +38,4 @@ class QuotesList extends React.Component {
     }
 }
 
-export default connect(state => state)(QuotesList);
+export default connect(state => state.quotesReducer)(QuotesList);

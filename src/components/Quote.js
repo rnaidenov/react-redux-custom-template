@@ -1,30 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Quotes extends React.Component {
+const Quote = ({ text, author }) => {
 
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-
-        const { text, author } = this.props;
-
-        return (
-            <div>
-                <div>
-                    <p>{text}</p>
-                    <p>- { author}</p>
-                </div>
+    return (
+        <div>
+            <div className='quoteWrapper'>
+                <p>{text}</p>
+                <p>- {author}</p>
             </div>
-        )
-    }
-}
-
-Quotes.prototypes = {
-    text: PropTypes.string,
-    author: PropTypes.string
+        </div>
+    )
 }
 
 export { Quote };
