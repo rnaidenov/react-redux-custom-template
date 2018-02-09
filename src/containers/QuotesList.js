@@ -28,7 +28,8 @@ class QuotesList extends React.Component {
 
             return (
                 <div>
-                    { randomQuotes }
+                    <img src={require('../../public/images/totoro.png')} alt=""/>
+                    <span className='greetingText'>Hi</span>
                 </div>
             )
         } else {

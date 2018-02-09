@@ -7,14 +7,28 @@ module.exports = {
         'babel-polyfill',path.resolve(__dirname, '../src/index.js')
     ],
     module: {
-        loaders: [{
-            test: /\.(js|jsx)$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader'
-        }, {
-            test: /\.scss$/,
-            loaders: ['style-loader', 'css-loader', 'sass-loader']
-        }]
+        loaders: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader'
+            }, 
+            {
+                test: /\.scss$/,
+                loaders: ['style-loader', 'css-loader', 'sass-loader']
+            }, 
+            {
+                test: /\.(png|jpg|gif|jpeg)$/,
+                use: [
+                {
+                    loader: 'url-loader',
+                    options: {
+                    limit: 8192
+                    }
+                }
+                ]
+            }
+        ]
     },
     output: {
         path: path.resolve(__dirname,'../public'),
